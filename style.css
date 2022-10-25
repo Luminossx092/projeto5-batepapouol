@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.main {
+    width: 375px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.Cabecalho {
+    height: 80px;
+    width: 375px;
+    background: #FFFFFF;
+    padding: 0 22px;
+    box-shadow: 0px 4px 6px 0px #0000000D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.Cabecalho img {
+    height: 53px;
+    width: 75px;
+}
+
+.Cabecalho ion-icon {
+    font-size: 42px;
+}
+
+.Batepapo {
+    height: 507px;
+    width: 100%;
+    background-color: #F3F3F3;
+    margin-top: 80px;
+    padding-top: 26px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.Batepapo .Mensagem {
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    background: #DCDCDC;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Batepapo .Mensagem .HoraMensagem {
+    color: #AAAAAA;
+    margin-right: 5px;
+}
+
+.Batepapo .Mensagem .QuemEscreveuPraQuemMensagem {
+    margin-right: 7px;
+}
+.Rodape {
+    width: 375px;
+    height: 80px;
+    padding: 0 17px;
+    background-color: white;
+    box-shadow: 0px -4px 6px 0px #0000000D;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.Rodape input[type=text] {
+    width: 300px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    font-style: italic;
+    border: none;
+    outline: none;
+}
+.Rodape ion-icon{
+    font-size: 32px;
+}
