@@ -12,6 +12,7 @@ function setupChatUol(){
 
 function PodeEntrarChat(response){
     setInterval(ManterUsuarioOnline, 5000);
+    setInterval(CarregarMensagens, 3000)
     CarregarMensagens();
 }
 
@@ -33,8 +34,16 @@ function ManterUsuarioOnline(){
     .then()
     .catch();
 }
-function meavisa(){
-    alert("status sendo atualizado");
+
+function MandarMensagem(){ 
+    const mensagemObject ={
+        from: nomeUsuario,
+	    to: "Todos",
+	    text: document.querySelector(".BotaoMandarMensagem").value,
+	    type: "message"}
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/messagess", mensagemObject)
+    .then(CarregarMensagens)
+    .catch(RecarregarPagina);
 }
 function CarregarMensagens(){
     axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
@@ -44,7 +53,7 @@ function CarregarMensagens(){
 
 function MensagensServidorRecebidas(response){
     const batepapo = document.querySelector(".Batepapo");
-    for(let i = 0; i < response.data.length; i++){
+    for(let i = 70; i < response.data.length; i++){
         if(response.data[i].type == "message"){
             batepapo.innerHTML += `<div class="Mensagem message">
             <div class="HoraMensagem">
@@ -87,9 +96,14 @@ function MensagensServidorRecebidas(response){
         else {
             alert("não deu certo o type")
         }
+        //
     }
+    document.querySelector(".Batepapo").lastChild.scrollIntoView();
 }
 
+function RecarregarPagina(){
+    window.location.reload();
+}
 function MensagensServidorError(error){
     alert("Mensagens não puderam ser carregadas...");
 }
