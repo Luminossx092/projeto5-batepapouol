@@ -14,6 +14,7 @@ function PodeEntrarChat(response){
     setInterval(ManterUsuarioOnline, 5000);
     setInterval(CarregarMensagens, 3000)
     CarregarMensagens();
+    BotaoEnter();
 }
 
 function PerguntarNovamente(error){
@@ -36,12 +37,13 @@ function ManterUsuarioOnline(){
 }
 
 function MandarMensagem(){ 
+    alert(document.querySelector(".BotaoMandarMensagem").value);
     const mensagemObject ={
         from: nomeUsuario,
 	    to: "Todos",
 	    text: document.querySelector(".BotaoMandarMensagem").value,
 	    type: "message"}
-    axios.post("https://mock-api.driven.com.br/api/v6/uol/messagess", mensagemObject)
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagemObject)
     .then(CarregarMensagens)
     .catch(RecarregarPagina);
 }
@@ -101,9 +103,20 @@ function MensagensServidorRecebidas(response){
     document.querySelector(".Batepapo").lastChild.scrollIntoView();
 }
 
-function RecarregarPagina(){
-    window.location.reload();
+function RecarregarPagina(error){
+    alert(error);
+    //window.location.reload();
 }
 function MensagensServidorError(error){
     alert("Mensagens não puderam ser carregadas...");
+}
+function BotaoEnter(){
+    let input = document.querySelector(".BotaoMandarMensagem");
+    input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.querySelector(".BotaoEnter").click();
+    }
+    }
+    );
 }
