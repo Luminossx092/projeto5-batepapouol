@@ -12,7 +12,7 @@
     <div class="main">
         <div class="Cabecalho">
             <img src="./Images/logo_uol.png" alt="">
-            <ion-icon name="people"></ion-icon>
+            <ion-icon onclick="ToggleSidebar()" name="people"></ion-icon>
         </div>
         <div class="Batepapo">
         </div>
@@ -24,6 +24,39 @@
             <img src="./Images/logo_uol.png" alt="">
             <input data-identifier="enter-name" type="text" placeholder="Digite seu nome">
             <button data-identifier="start" onclick="BotaoEntrarUol()">Entrar</button>
+        </div>
+        <div class="Sidebar DESAPARECA">
+            <div onclick="ToggleSidebar()" class="TelaPreta"></div>
+            <div class="MenuSidebar">
+                <h1>Escolha um contato
+                    para enviar mensagem:</h1>
+                <div class="Contatos">
+                    <div data-identifier="participant" onclick="CheckContact(this)" class="Contato isChecked">
+                        <ion-icon name="people"></ion-icon>
+                        <p>Todos</p>
+                        <div class="check">
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="Visibilidade">
+                    <h1>Escolha a visibilidade:</h1>
+                    <div data-identifier="visibility" onclick="CheckVisibility(this), PrivateMessage(false)" class="Contato isChecked">
+                        <ion-icon name="lock-open"></ion-icon>
+                        <p>Público</p>
+                        <div class="check">
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div data-identifier="visibility" onclick="CheckVisibility(this), PrivateMessage(true)" class="Contato">
+                        <ion-icon name="lock-closed"></ion-icon>
+                        <p>Privado</p>
+                        <div class="check">
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

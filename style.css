@@ -34,7 +34,9 @@ input:focus::placeholder {
 .Cabecalho ion-icon {
     font-size: 42px;
 }
-
+.Cabecalho ion-icon:hover{
+    cursor: pointer;
+}
 .Batepapo {
     height: 100%;
     width: 100%;
@@ -103,6 +105,10 @@ input:focus::placeholder {
     font-size: 32px;
 }
 
+.Rodape .BotaoEnter:hover{
+    cursor: pointer;
+}
+
 .TelaInicial{
     width: 375px;
     height: 100%;
@@ -146,6 +152,71 @@ input:focus::placeholder {
     border: none;
     text-align: center;
 }
+
+.Sidebar{
+    width: 375px;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+}
+.Sidebar .TelaPreta{
+    width: 116px;
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+.Sidebar .MenuSidebar{
+    width: 259px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.Sidebar .MenuSidebar h1{
+    width: 259px;
+    margin: 20px 0;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: center;
+    color: black;
+}
+
+.Sidebar .MenuSidebar .Contato{
+    height: 36px;
+    font-size: 24px;
+    padding: 0 18px ;
+    display: flex;
+    align-items: center;
+}
+.Sidebar .MenuSidebar .Contato:hover{
+    cursor: pointer;
+}
+
+.Sidebar .MenuSidebar .Contato p{
+    margin-left: 8px;
+    width: 190px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.Sidebar .MenuSidebar .Contato .check{
+    font-size: 20px;
+    color: #28BB25;
+    margin-left: auto;
+    display: none;
+}
+.Sidebar .MenuSidebar .isChecked .check{
+    display: flex;
+}
+
 .DESAPARECA{
     display: none;
 }
