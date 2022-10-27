@@ -1,5 +1,17 @@
 let nomeUsuario;
-setupChatUol();
+//setupChatUol();
+CarregarMensagens();
+function BotaoEntrarUol(){
+    const objUsuario = {
+        name: document.querySelector(".TelaInicial input").value
+    }
+    nomeUsuario = objUsuario.name;
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", objUsuario)
+    .then(PodeEntrarChat)
+    .catch(PerguntarNovamente)
+}
+/*
+Só funciona sem o bonus
 function setupChatUol(){
     const objUsuario = {
         name: prompt("Insira seu nome:")
@@ -8,9 +20,10 @@ function setupChatUol(){
     axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", objUsuario)
     .then(PodeEntrarChat)
     .catch(PerguntarNovamente)
-}
+}*/
 
 function PodeEntrarChat(response){
+    document.querySelector(".TelaInicial").classList.add("DESAPARECA");
     setInterval(ManterUsuarioOnline, 5000);
     setInterval(CarregarMensagens, 3000)
     CarregarMensagens();
@@ -18,13 +31,16 @@ function PodeEntrarChat(response){
 }
 
 function PerguntarNovamente(error){
+    alert("Esse usuário já existe, insira um outro nome");
+    /*
+    Só funciona sem bonus
     const objUsuario = {
-        name: prompt("Esse usuário já existe, insira um novo nome:")
+        name: document.querySelector(".TelaInicial input").value
     }
     nomeUsuario = objUsuario.name;
     axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeUsuario)
     .then(PodeEntrarChat)
-    .catch(PerguntarNovamente)
+    .catch(PerguntarNovamente)*/
 }
 
 function ManterUsuarioOnline(){
@@ -37,7 +53,6 @@ function ManterUsuarioOnline(){
 }
 
 function MandarMensagem(){ 
-    alert(document.querySelector(".BotaoMandarMensagem").value);
     const mensagemObject ={
         from: nomeUsuario,
 	    to: "Todos",
@@ -46,6 +61,7 @@ function MandarMensagem(){
     axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagemObject)
     .then(CarregarMensagens)
     .catch(RecarregarPagina);
+    document.querySelector(".BotaoMandarMensagem").value = "";
 }
 function CarregarMensagens(){
     axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
@@ -82,7 +98,7 @@ function MensagensServidorRecebidas(response){
             </div>
         </div>`
         }
-        else if(response.data[i].type == "private_message"){
+        else if(response.data[i].type == "private_message" && response.data[i].to == nomeUsuario){
             batepapo.innerHTML += `<div class="Mensagem private_message">
             <div class="HoraMensagem">
                 (${response.data[i].time})
@@ -95,17 +111,13 @@ function MensagensServidorRecebidas(response){
             </div>
         </div>`
         }
-        else {
-            alert("não deu certo o type")
-        }
-        //
     }
     document.querySelector(".Batepapo").lastChild.scrollIntoView();
 }
 
 function RecarregarPagina(error){
-    alert(error);
-    //window.location.reload();
+    alert(error + "recarregando pagina");
+    window.location.reload();
 }
 function MensagensServidorError(error){
     alert("Mensagens não puderam ser carregadas...");

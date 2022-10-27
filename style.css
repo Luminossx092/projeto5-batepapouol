@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+input:focus::placeholder {
+    color: transparent;
+  }
+
 .Cabecalho {
     height: 80px;
     width: 375px;
@@ -97,4 +101,51 @@
 }
 .Rodape ion-icon{
     font-size: 32px;
+}
+
+.TelaInicial{
+    width: 375px;
+    height: 100%;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+
+    outline: none;
+}
+.TelaInicial img{
+    height: 92px;
+    width: 130px;
+    margin-top: 72px;
+    margin-bottom: 94px;
+}
+
+.TelaInicial input[type=text]{
+    height: 54px;
+    width: 261px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #D7D7D7;
+    color: #AEAEAE;
+    text-align: center;
+    outline: none;
+}
+
+.TelaInicial button{
+    height: 45px;
+    width: 109px;
+    border-radius: 9px;
+    background: #E7E7E7;
+    color: #696969;
+    border: none;
+    text-align: center;
+}
+.DESAPARECA{
+    display: none;
 }
