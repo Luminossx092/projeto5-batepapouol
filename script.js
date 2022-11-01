@@ -94,7 +94,7 @@ function MensagensServidorRecebidas(response){
     batepapo.innerHTML = "";
     for(let i = 80; i < response.data.length; i++){
         if(response.data[i].type == "message"){
-            batepapo.innerHTML += `<div class="Mensagem message">
+            batepapo.innerHTML += `<div data-test="message" class="Mensagem message">
             <div class="HoraMensagem">
                 (${response.data[i].time})
             </div>
@@ -107,7 +107,7 @@ function MensagensServidorRecebidas(response){
         </div>`
         }
         else if(response.data[i].type == "status"){
-            batepapo.innerHTML += `<div class="Mensagem status">
+            batepapo.innerHTML += `<div data-test="message" class="Mensagem status">
             <div class="HoraMensagem">
                 (${response.data[i].time})
             </div>
@@ -120,7 +120,7 @@ function MensagensServidorRecebidas(response){
         </div>`
         }
         else if(response.data[i].type == "private_message" && response.data[i].to == nomeUsuario || response.data[i].from == nomeUsuario){
-            batepapo.innerHTML += `<div class="Mensagem private_message">
+            batepapo.innerHTML += `<div data-test="message" class="Mensagem private_message">
             <div class="HoraMensagem">
                 (${response.data[i].time})
             </div>
@@ -163,11 +163,11 @@ function ListaParticipantesPedido(){
 }
 function CarregarListaParticipantes(response){
     const listaContatos = document.querySelector(" .Sidebar .Contatos");
-    for(let i = 0; i < 10; i++){
-        listaContatos.innerHTML += `<div data-identifier="participant" onclick="CheckContact(this)" class="Contato">
+    for(let i = 0; i < 11; i++){
+        listaContatos.innerHTML += `<div data-test="participant" data-identifier="participant" onclick="CheckContact(this)" class="Contato">
         <ion-icon name="people"></ion-icon>
         <p>${response.data[i].name}</p>
-        <div class="check">
+        <div data-test="check" class="check">
             <ion-icon name="checkmark-outline"></ion-icon>
         </div>
     </div>`

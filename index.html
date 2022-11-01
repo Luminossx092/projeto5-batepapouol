@@ -12,47 +12,47 @@
     <div class="main">
         <div class="Cabecalho">
             <img src="./Images/logo_uol.png" alt="">
-            <ion-icon onclick="ToggleSidebar()" name="people"></ion-icon>
+            <ion-icon data-test="open-participants" onclick="ToggleSidebar()" name="people"></ion-icon>
         </div>
         <div class="Batepapo">
         </div>
         <div class="Rodape">
-            <input class="BotaoMandarMensagem" type="text" placeholder="Escreva aqui...">
-            <ion-icon class="BotaoEnter" onclick="MandarMensagem()" name="paper-plane-outline"></ion-icon>
+            <input data-test="input-message"class="BotaoMandarMensagem" type="text" placeholder="Escreva aqui...">
+            <ion-icon data-test="send-message" class="BotaoEnter" onclick="MandarMensagem()" name="paper-plane-outline"></ion-icon>
         </div>
         <div class="TelaInicial">
             <img src="./Images/logo_uol.png" alt="">
-            <input data-identifier="enter-name" type="text" placeholder="Digite seu nome">
-            <button data-identifier="start" onclick="BotaoEntrarUol()">Entrar</button>
+            <input data-test="input-name" data-identifier="enter-name" type="text" placeholder="Digite seu nome">
+            <button data-test="send-name" data-identifier="start" onclick="BotaoEntrarUol()">Entrar</button>
         </div>
         <div class="Sidebar DESAPARECA">
             <div onclick="ToggleSidebar()" class="TelaPreta"></div>
             <div class="MenuSidebar">
                 <h1>Escolha um contato
                     para enviar mensagem:</h1>
-                <div class="Contatos">
+                <div data-test="all" class="Contatos">
                     <div data-identifier="participant" onclick="CheckContact(this)" class="Contato isChecked">
                         <ion-icon name="people"></ion-icon>
                         <p>Todos</p>
-                        <div class="check">
+                        <div data-test="check" class="check">
                             <ion-icon name="checkmark-outline"></ion-icon>
                         </div>
                     </div>
                 </div>
                 <div class="Visibilidade">
                     <h1>Escolha a visibilidade:</h1>
-                    <div data-identifier="visibility" onclick="CheckVisibility(this), PrivateMessage(false)" class="Contato isChecked">
+                    <div data-test="public" data-identifier="visibility" onclick="CheckVisibility(this), PrivateMessage(false)" class="Contato isChecked">
                         <ion-icon name="lock-open"></ion-icon>
                         <p>Público</p>
-                        <div class="check">
+                        <div data-test="check" class="check">
                             <ion-icon name="checkmark-outline"></ion-icon>
                         </div>
                     </div>
-                    <div data-identifier="visibility" onclick="CheckVisibility(this), PrivateMessage(true)" class="Contato">
+                    <div data-test="private" data-identifier="visibility" onclick="CheckVisibility(this), PrivateMessage(true)" class="Contato">
                         <ion-icon name="lock-closed"></ion-icon>
                         <p>Privado</p>
                         <div class="check">
-                            <ion-icon name="checkmark-outline"></ion-icon>
+                            <ion-icon data-test="check" name="checkmark-outline"></ion-icon>
                         </div>
                     </div>
                 </div>
